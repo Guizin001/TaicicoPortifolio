@@ -1,0 +1,493 @@
+/* Variáveis de cores */
+$primary-color: #ff7043;
+$secondary-color: #4d4c4c;
+$background-color: #a0a0a079;
+$text-color: #333;
+$footer-bg-color: #282828;
+$white: #fff;
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+  font-family: 'Roboto', sans-serif;
+  color: $text-color;
+  scroll-behavior: smooth; /* Adicionando smooth scroll */
+}
+
+/* Container principal */
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Menu de Navegação */
+.header {
+  background-color: rgba(0, 0, 0, 0.7); /* Cor de fundo com transparência */
+  padding: 10px 0; /* Menor altura no menu */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px); /* Para adicionar um efeito de desfoque no fundo */
+}
+
+/* Container do menu */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Centraliza logo e nav verticalmente */
+}
+
+/* Logo */
+.logo {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 24px;
+  color: $primary-color;
+  font-weight: bold;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+/* Barra de navegação */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  position: relative;
+}
+
+/* Estilos do Menu Hambúrguer */
+.hamburger {
+  display: none; /* Inicialmente escondido */
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001; /* Garante que o hambúrguer fique acima de outros elementos */
+}
+
+.hamburger span {
+  width: 25px;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+/* Lista de navegação */
+.navbar-list {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  z-index: 1000; /* Fica acima de outros elementos se necessário */
+}
+
+/* Links de navegação */
+.navbar-list li a {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  padding: 10px 15px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+/* Barrinha (efeito de linha animada) */
+.navbar-list li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ff7043;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar-list li a:hover {
+  color: $primary-color;
+}
+
+.navbar-list li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Barra de navegação (responsivo para dispositivos móveis) */
+@media (max-width: 768px) {
+  .navbar-list {
+    display: none; /* Inicialmente oculta */
+    flex-direction: row; /* Exibe os itens lado a lado */
+    font-size: 5px;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    border-radius: 10px;
+    top: 38px; /* Coloca o menu abaixo do cabeçalho */
+    right: 20px;
+    background-color: #38373767; /* Fundo escuro do menu */
+    padding: 20px 30;
+    z-index: 999; 
+  }
+
+  /* Exibe a lista de navegação quando a classe 'active' for adicionada */
+  .navbar-list.active {
+    display: flex;
+  }
+
+  /* Mostra o botão hambúrguer em telas pequenas */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Estilo para os links do menu em telas pequenas */
+  .navbar-list li a {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .header {
+    padding: 10px 15px;
+  }
+}
+
+
+
+/* Sobre Mim - Linha do Tempo */
+.about {
+  background-color: #f4f4f4;
+  padding: 80px 0;
+
+  h1 {
+    text-align: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 36px;
+    color: $text-color;
+    margin-bottom: 60px;
+  }
+
+  .about-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 0 20px;
+  }
+
+  /* Coluna (Educação ou Profissional) */
+  .column {
+    flex: 1;
+  }
+
+  /* Título das colunas */
+  .section-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: $text-color;
+    margin-bottom: 20px;
+  }
+
+  /* Grade de Cards */
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dois cards por linha */
+    gap: 20px;
+  }
+
+  /* Cards */
+  .card {
+    background-color: #fff;
+    padding: 10px 15px; /* Reduzi o espaçamento interno */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: auto; /* Permite altura flexível */
+    min-height: 250px; /* Define altura mínima */
+    display: flex;
+    flex-direction: column;
+
+    h4 {
+      font-size: 16px; /* Mantém o título visível */
+      color: $primary-color;
+      margin-bottom: 6px; /* Margem menor abaixo do título */
+      line-height: 1.2; /* Reduz espaço entre as linhas */
+    }
+
+    p {
+      font-size: 14px;
+      color: darken($text-color, 15%);
+      line-height: 1.4; /* Reduz espaço entre linhas */
+      margin-top: 0; /* Remove espaçamento adicional acima do parágrafo */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 10; /* Permite até 10 linhas de texto visível */
+      -webkit-box-orient: vertical;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: $primary-color;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $text-color; /* Muda a cor do link ao passar o mouse */
+      }
+    }
+  }
+
+  /* Linha de conexão entre os cards (simulando linha do tempo) */
+  .timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    margin-top: 20vh;
+    margin-bottom: 25vh;
+    background-color: $primary-color; /* Cor da linha do tempo */
+    transform: translateX(-50%);
+  }
+
+  /* Esconder o item em telas menores que 768px */
+@media (max-width: 768px) {
+  .timeline-line {
+    display: none;
+  }
+}
+
+  /* Animação dos cards */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-bottom {
+      flex-direction: column; /* Exibe as colunas em uma única coluna */
+      gap: 30px; /* Ajusta o espaçamento */
+      padding: 0 15px;
+    }
+
+    .card-container {
+      grid-template-columns: 1fr; /* Exibe os cards em uma coluna em dispositivos móveis */
+      gap: 15px;
+    }
+
+    .timeline-line {
+      margin-top: 15vh; /* Ajusta a posição da linha do tempo */
+      margin-bottom: 20vh;
+    }
+  }
+}
+
+/* Seção de Projetos */
+#projects {
+  padding: 100px 0; /* Aumentando o padding para dar mais destaque à seção */
+  background-color: #f9f9f9; /* Cor de fundo mais suave para a seção */
+
+  /* Título da seção */
+  .section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 36px;
+    text-align: center; /* Centraliza o título */
+    color: $text-color;
+    margin-bottom: 50px; /* Aumentando o espaço abaixo do título */
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  /* Grid para os cards de projetos */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Grid responsivo */
+    gap: 30px;
+    padding: 0 15px;
+  }
+
+  /* Cards de Projetos */
+  .project-card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .project-card img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .project-card h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: $primary-color;
+    margin-top: 20px;
+  }
+
+  .project-card p {
+    font-size: 14px;
+    color: $secondary-color;
+    margin-top: 10px;
+  }
+
+  .project-link {
+    font-size: 14px;
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 15px;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    #projects {
+      padding: 60px 0; /* Ajustando o padding para telas menores */
+    }
+
+    .project-grid {
+      grid-template-columns: 1fr; /* Exibe os cards de projeto em uma única coluna */
+    }
+  }
+}
+
+/* Seção de Habilidades */
+#skills {
+  background-color: #ffffff;
+  padding: 100px 0;
+}
+
+/* Ícones */
+#skills i {
+  font-size: 30px;
+  color: #ff7043;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.skill-item {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-10px);
+}
+
+.skill-item img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  #skills {
+    padding: 60px 0;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 itens por linha */
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: 1fr; /* Um item por linha em dispositivos menores */
+  }
+
+  .skill-item {
+    height: auto; /* Permite que a altura seja flexível em dispositivos móveis */
+    padding: 20px; /* Ajusta o padding para dispositivos móveis */
+  }
+}
+
+/* Rodapé */
+.footer {
+  background-color: $footer-bg-color;
+  padding: 40px 0;
+  color: $white;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 14px;
+  color: $white;
+  margin-top: 20px;
+}
+
+.footer .social-icons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer .social-icon {
+  font-size: 20px;
+  color: $white;
+  transition: color 0.3s ease;
+}
+
+.footer .social-icon:hover {
+  color: $primary-color;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 20px 15px; /* Ajusta o padding em telas menores */
+  }
+
+  .footer p {
+    font-size: 12px; /* Reduz o tamanho da fonte */
+  }
+
+  .footer .social-icons {
+    gap: 15px; /* Ajusta o espaçamento entre os ícones */
+  }
+
+  .footer .social-icon {
+    font-size: 20px; /* Diminui o tamanho dos ícones */
+  }
+}
