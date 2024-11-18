@@ -1,3 +1,6 @@
+##Preview do Site
+https://taicicoportfolio.netlify.app/
+
 ## Olá, meu nome é Guilherme Taicico!
 
 - 🎓 Estudando Análise e Desenvolvimento de Sistemas na Unicsul.
